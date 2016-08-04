@@ -1,0 +1,58 @@
+apply plugin: 'com.android.application'
+apply plugin: 'android-apt'
+android {
+
+    compileSdkVersion "android-$project.compileSdkVersion"
+    buildToolsVersion project.buildToolsVersion
+
+    defaultConfig {
+        applicationId "com.rahul.movie.db"
+        minSdkVersion project.minSdkVersion
+        targetSdkVersion project.targetSdkVersion
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+repositories {
+    jcenter()
+    maven {
+        url "$project.glideSnapshotUrl"
+    }
+}
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    testCompile 'junit:junit:4.12'
+    compile "com.android.support.constraint:constraint-layout:$project.constraintLayoutVersion"
+    compile "com.android.support:appcompat-v7:$project.supportLibVersion"
+    compile "com.android.support:palette-v7:$project.supportLibVersion"
+    compile "com.android.support:design:$project.supportLibVersion"
+    compile "com.android.support:recyclerview-v7:$project.supportLibVersion"
+    compile "com.squareup.okhttp3:okhttp:$project.okhttpVersion"
+    compile "com.jakewharton:butterknife:$project.butterKnife"
+    apt "com.jakewharton:butterknife-compiler:$project.butterKnife"
+    compile "com.github.bumptech.glide:glide:$project.glideVersion"
+    compile "com.github.bumptech.glide:okhttp3-integration:$project.glideModuleVersion"
+    compile "com.squareup.retrofit2:converter-gson:$project.retrofitVersion"
+    compile "com.squareup.retrofit2:retrofit:$project.retrofitVersion"
+    compile "com.squareup.retrofit2:adapter-rxjava:$project.retrofitVersion"
+
+    compile "io.reactivex:rxandroid:$project.rxAndroidVersion"
+// Because RxAndroid releases are few and far between, it is recommended you also
+// explicitly depend on RxJava's latest version for bug fixes and new features.
+    compile "io.reactivex:rxjava:$project.rxJavaVersion"
+    compile "com.squareup.okhttp3:logging-interceptor:$project.okhttpVersion"
+}

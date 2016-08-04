@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/list_item"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="?attr/selectableItemBackgroundBorderless"
+    android:clickable="true"
+    tools:context="com.rahul.movie.db.MainActivity">
+
+    <com.rahul.movie.db.view.RectangleImageView
+        android:id="@+id/squareImageView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:adjustViewBounds="true"
+        android:cropToPadding="false"
+        android:scaleType="centerCrop"
+
+        android:transitionName="@string/banner_transition"
+        app:roundedRadius="@dimen/corner_radius" />
+
+    <TextView
+        android:id="@+id/txtTitle"
+        style="@style/TextAppearance.AppCompat.Body2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/movieRating"
+        android:ellipsize="end"
+        android:maxLines="1"
+        tools:text="TextView" />
+
+    <TextView
+        android:id="@+id/txtDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtTitle"
+        tools:text="TextView" />
+
+    <RatingBar
+        android:id="@+id/movieRating"
+        style="@style/Widget.AppCompat.RatingBar.Small"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/squareImageView"
+        android:layout_marginTop="@dimen/card_insets"
+        android:max="10"
+        tools:rating="2.5" />
+
+
+</RelativeLayout>
